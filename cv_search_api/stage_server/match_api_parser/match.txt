@@ -1,0 +1,14 @@
+pip install fuzzywuzzy 
+
+
+# fuzz is used to compare TWO strings
+from fuzzywuzzy import fuzz
+
+# process is used to compare a string to MULTIPLE other strings
+from fuzzywuzzy import process
+
+
+{
+    "detail": "JSON parse error - Expecting value: line 1 column 1 (char 0)"
+}
+pip install --upgrade jsonpath-ng
