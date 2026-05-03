@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}OCR Image from URL{% endblock %}
+
+{% block extrahead %}
+    <link rel="stylesheet" href="{% static 'ocr/css/ocr.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+    {% if image_text %}
+        <h3>Text for Image</h3>
+        
+        <button id="copyTextButton" onclick="copyText('imageText', 'copyMessage');">
+            Copy Text
+        </button>
+        <span id="copyMessage" class="hidden">Text copied!</span>
+        
+        <div>
+        <textarea class="fullWidth fullHeight" id="imageText">
+            {{ image_text }}
+        </textarea>
+        </div>
+        
+        <br/>
+        
+        <img src="{{ image_url }}" class="fullSizeImg">
+        
+        <br/>
+    {% endif %}
+    
+    <h3>Get Text from Image at URL</h3>
+    
+    <form method="post">
+    {% csrf_token %}
+    
+    {{ form.as_p }}
+    
+    <input type="submit" value="Get Text">
+    
+    </form>
+    
+{% endblock %}
+
+{% block extrajs %}
+    
+    <script type="text/javascript" src="{% static 'ocr/js/copy_text.js' %}"></script>
+
+{% endblock %}
